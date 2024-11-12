@@ -53,6 +53,9 @@ public class Player : MonoBehaviour
         direccion = -direccion;
     }
 
+    //protected virtual void IncreaseSpeed()
+    //{
 
+    //}
     #endregion
 }
