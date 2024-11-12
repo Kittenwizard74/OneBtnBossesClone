@@ -4,6 +4,8 @@ using UnityEngine;
 
 abstract class EnemyAttacks : MonoBehaviour
 {
+    //code a ser abstract como ref para enemy attack cone, line y spin
+
     [Header("shooting")]
     [SerializeField] float EnemyBulletVel;
     [SerializeField] GameObject EnemyBulletPrefab;

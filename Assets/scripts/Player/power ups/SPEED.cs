@@ -19,30 +19,25 @@ public class SPEED : MonoBehaviour
 
     void Start()
     {
-        // Inicializar el slider
         energySlider.maxValue = 100f;
         energySlider.value = energy;
     }
 
     void Update()
     {
-        // Actualizar el slider
         energySlider.value = energy;
 
-        // Activar el power-up
         if (Input.GetKeyDown(KeyCode.Space) && !isRecharging && energy > 0)
         {
             isPowerUpActive = true;
         }
 
-        // Desactivar el power-up si no hay energía
         if (energy <= 0)
         {
             isPowerUpActive = false;
             StartCoroutine(RechargeEnergy());
         }
 
-        // Aplicar efectos del power-up
         if (isPowerUpActive)
         {
             ActivatePowerUp();
@@ -55,14 +50,12 @@ public class SPEED : MonoBehaviour
 
     void ActivatePowerUp()
     {
-        // Aumentar velocidad y consumir energía
         playerRb.velocity = new Vector2(boostedSpeed, playerRb.velocity.y);
         energy -= energyDrainRate * Time.deltaTime;
     }
 
     void DeactivatePowerUp()
     {
-        // Volver a la velocidad normal
         playerRb.velocity = new Vector2(normalSpeed, playerRb.velocity.y);
     }
 
@@ -71,10 +64,8 @@ public class SPEED : MonoBehaviour
         if (isRecharging) yield break;
         isRecharging = true;
 
-        // Esperar antes de recargar
         yield return new WaitForSeconds(rechargeDelay);
 
-        // Recargar energía
         while (energy < 100f)
         {
             energy += rechargeRate * Time.deltaTime;
@@ -87,7 +78,6 @@ public class SPEED : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // Invulnerabilidad mientras el power-up está activo
         if (isPowerUpActive && collision.gameObject.CompareTag("Enemy_Bullet"))
         {
             Debug.Log("No hay colisión porque el powerup está activado.");

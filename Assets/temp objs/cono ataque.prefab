@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -2235726806009340616}
   m_Layer: 0
   m_Name: cono ataque
-  m_TagString: Enemy_Bullet
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -120,10 +120,8 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: 0.0070997477, y: 0.5828552}
-  - {x: -0.5041853, y: -0.29251137}
-  - {x: 0.51297206, y: -0.2929642}
-  - {x: 0.007472098, y: 0.57606936}
+  - {x: -0.5, y: 0.2113333}
+  - {x: 0.5, y: 0.2113333}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
