@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -2235726806009340616}
   m_Layer: 0
   m_Name: cono ataque
-  m_TagString: Untagged
+  m_TagString: Enemy_Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
+  m_Sprite: {fileID: 2066003245, guid: b07d1db5f1c4d384b8876bcf6f37e539, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -120,8 +120,10 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -0.5, y: 0.2113333}
-  - {x: 0.5, y: 0.2113333}
+  - {x: 0.0070997477, y: 0.5828552}
+  - {x: -0.5041853, y: -0.29251137}
+  - {x: 0.51297206, y: -0.2929642}
+  - {x: 0.007472098, y: 0.57606936}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0

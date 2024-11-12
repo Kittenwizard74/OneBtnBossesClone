@@ -6,9 +6,9 @@ using UnityEngine;
 public class EnemyConeAttack : MonoBehaviour 
 {
     public GameObject[] objectsToActivate;  // Lista de objetos que se activarán aleatoriamente
-    public float minTime = 3f;  // Tiempo mínimo para el temporizador (en segundos)
-    public float maxTime = 7f;  // Tiempo máximo para el temporizador (en segundos)
-    public float activeDuration = 5f;  // Tiempo durante el cual el objeto se mantiene activo
+    public float minTime = 1f;  // Tiempo mínimo para el temporizador (en segundos)
+    public float maxTime = 2f;  // Tiempo máximo para el temporizador (en segundos)
+    public float activeDuration = 3f;  // Tiempo durante el cual el objeto se mantiene activo
 
 
     private void Awake()
@@ -16,7 +16,7 @@ public class EnemyConeAttack : MonoBehaviour
         StartCoroutine(HandleCones());
     }
 
-    IEnumerable HandleCones()
+    IEnumerator HandleCones()
     {
         while (true)
         {
