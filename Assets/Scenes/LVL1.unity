@@ -1224,7 +1224,7 @@ GameObject:
   m_Layer: 0
   m_Name: bulletSpawner (3)
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -4136,7 +4136,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1365138742}
   - component: {fileID: 1365138744}
-  - component: {fileID: 1365138743}
   m_Layer: 0
   m_Name: charger
   m_TagString: Untagged
@@ -4166,26 +4165,6 @@ RectTransform:
   m_AnchoredPosition: {x: -567, y: -285}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 1}
---- !u!114 &1365138743
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1365138741}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4bced2a1512643a4faddea1bda8ae806, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  normalSpeed: 5
-  boostedSpeed: 10
-  energy: 100
-  energyDrainRate: 20
-  rechargeRate: 10
-  rechargeDelay: 2
-  energySlider: {fileID: 0}
-  playerRb: {fileID: 0}
 --- !u!114 &1365138744
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4233,7 +4212,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 100
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 100
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -4448,6 +4427,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1374113004}
   m_CullTransparentMesh: 1
+--- !u!1 &1408118948
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1408118949}
+  - component: {fileID: 1408118950}
+  m_Layer: 0
+  m_Name: speedManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1408118949
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1408118948}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1692393024}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1408118950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1408118948}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bced2a1512643a4faddea1bda8ae806, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speedBoost: 0
+  powerUpLoad: {fileID: 1365138744}
 --- !u!1 &1440641382
 GameObject:
   m_ObjectHideFlags: 0
@@ -4804,7 +4829,7 @@ GameObject:
   m_Layer: 0
   m_Name: bulletSpawner (2)
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -5423,6 +5448,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 43694209}
+  - {fileID: 1408118949}
   m_Father: {fileID: 1037218139}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &1692393025
@@ -5465,6 +5491,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocidad: 100
+  isSpeedBoostActive: 0
   bulletPrefab: {fileID: 8704136883406980669, guid: 9eff0cbde2db8414eb5a9fe76b354170, type: 3}
   shootPoint: {fileID: 43694209}
   bulletSpeed: 20
@@ -5581,6 +5608,11 @@ MonoBehaviour:
   MaxHP: 3
   CurrentHP: 0
   deathPanel: {fileID: 455413810}
+  lifeSprites:
+  - {fileID: 1808221727}
+  - {fileID: 1370667132}
+  - {fileID: 159434942}
+  canTakeDamage: 1
 --- !u!114 &1692393030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5588,19 +5620,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1692393023}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4bced2a1512643a4faddea1bda8ae806, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  normalSpeed: 5
-  boostedSpeed: 10
-  energy: 100
-  energyDrainRate: 20
-  rechargeRate: 10
-  rechargeDelay: 2
-  energySlider: {fileID: 1365138744}
-  playerRb: {fileID: 1692393025}
+  speedBoost: 1
+  powerUpLoad: {fileID: 1365138744}
 --- !u!1 &1712943722
 GameObject:
   m_ObjectHideFlags: 0
@@ -6480,7 +6506,7 @@ GameObject:
   m_Layer: 0
   m_Name: bulletSpawner (1)
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1

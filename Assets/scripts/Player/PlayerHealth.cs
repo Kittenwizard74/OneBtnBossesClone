@@ -11,8 +11,11 @@ public class PlayerHealth : MonoBehaviour
     [Header("HP")]
     [SerializeField] int MaxHP = 3;
     [SerializeField] int CurrentHP;
-    [SerializeField] GameObject deathPanel;
 
+    [SerializeField] GameObject deathPanel;
+    [SerializeField] private GameObject[] lifeSprites;
+
+    [SerializeField] public bool canTakeDamage = true;
     private bool alive;
     
     #endregion
@@ -25,22 +28,35 @@ public class PlayerHealth : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (alive == true && collision.CompareTag("Enemy_Bullet"))
+        if (alive && canTakeDamage && collision.CompareTag("Enemy_Bullet"))
         {
-            CurrentHP--;
-            handleHealth();
+            TakeDamage();
         }
     }
 
     #endregion
     #region custom methods
-    protected virtual void handleHealth()
+    public void handleHealth()
     {
         if(CurrentHP <= 0) 
         { 
             alive = false;
             Time.timeScale = 0f;
             deathPanel.SetActive(true);
+        }
+    }
+
+    private void TakeDamage()
+    {
+        if (CurrentHP > 0)
+        {
+            CurrentHP--;
+            if (CurrentHP < lifeSprites.Length)
+            {
+                lifeSprites[CurrentHP].SetActive(false);
+            }
+
+            handleHealth();
         }
     }
     #endregion
