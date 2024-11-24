@@ -4466,17 +4466,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1408118948}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4bced2a1512643a4faddea1bda8ae806, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  energy: 100
-  energyDrainRate: 1000
-  rechargeRate: 10
-  rechargeDelay: 2
-  energySlider: {fileID: 1365138744}
-  playerScript: {fileID: 1692393026}
+  speedBoost: 0
+  powerUpLoad: {fileID: 1365138744}
 --- !u!1 &1440641382
 GameObject:
   m_ObjectHideFlags: 0
@@ -5609,9 +5605,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 334c9371896418f4386e4281ce61f24e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHP: 1000
+  MaxHP: 3
   CurrentHP: 0
   deathPanel: {fileID: 455413810}
+  lifeSprites:
+  - {fileID: 1808221727}
+  - {fileID: 1370667132}
+  - {fileID: 159434942}
+  canTakeDamage: 1
 --- !u!114 &1692393030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5619,17 +5620,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1692393023}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4bced2a1512643a4faddea1bda8ae806, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  energy: 100
-  energyDrainRate: 20
-  rechargeRate: 10
-  rechargeDelay: 2
-  energySlider: {fileID: 1365138744}
-  playerScript: {fileID: 1692393026}
+  speedBoost: 1
+  powerUpLoad: {fileID: 1365138744}
 --- !u!1 &1712943722
 GameObject:
   m_ObjectHideFlags: 0

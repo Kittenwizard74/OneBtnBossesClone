@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
 {
     #region Variables
     [Header("Movimiento")]
-    [SerializeField] float velocidad = 5f;
+    [SerializeField] public float velocidad = 5f;
     private Vector3 direccion = Vector3.forward;
     public bool isSpeedBoostActive = false;
 

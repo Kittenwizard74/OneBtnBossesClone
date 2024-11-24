@@ -7,60 +7,65 @@ using UnityEngine.UI;
 public class SpeedPowerup : MonoBehaviour
 {
     #region Variables
-    [SerializeField] float energy = 100f;
-    [SerializeField] float energyDrainRate = 20f;
-    [SerializeField] float rechargeRate = 10f;
-    [SerializeField] float rechargeDelay = 2f;
-    [SerializeField] Slider energySlider;
-    public Player playerScript;
-    //private bool isPowerUpActive = false;
-    private bool isRecharging = false;
+    [SerializeField] float speedBoost;
+    [SerializeField] Slider powerUpLoad;
+    private float normalSpeed;
+    private Player player;
+    private PlayerHealth playerHealth;
+
     #endregion
 
     #region Base Methods
     void Start()
     {
-        energySlider.maxValue = 100f;
-        energySlider.value = energy;
+        player = gameObject.GetComponent<Player>();
+        playerHealth = gameObject.GetComponent<PlayerHealth>();
+
+        normalSpeed = player.velocidad;
+        SetSliderValues();
     }
 
     void Update()
     {
-        energySlider.value = energy;
-
-        if (Input.GetKeyDown(KeyCode.Space) && !isRecharging && energy > 0)
-        {
-            playerScript.ActivateSpeedBoost();
-            energy -= energyDrainRate * Time.deltaTime;
-
-            if (energy <= 0)
-            {
-                StartCoroutine(RechargeEnergy());
-            }
-        }
-        else
-        {
-            playerScript.DeactivateSpeedBoost();
-        }
+        PowerUpEffect();
     }
     #endregion
 
     #region Custom Variables
-    System.Collections.IEnumerator RechargeEnergy()
+    private void PowerUpEffect()
     {
-        if (isRecharging) yield break;
-        isRecharging = true;
-
-        yield return new WaitForSeconds(rechargeDelay);
-
-        while (energy < 100f)
+        if (Input.GetKey(KeyCode.Space))
         {
-            energy += rechargeRate * Time.deltaTime;
-            energySlider.value = energy;
-            yield return null;
+            if (powerUpLoad.value > 0)
+            {
+                PowerUpState(false, player.velocidad, speedBoost);
+                powerUpLoad.value -= Time.deltaTime * 100;
+            }
+            else
+            {
+                PowerUpState(true, normalSpeed, 0);
+            }
         }
+        else
+        {
+            PowerUpState(true, normalSpeed, 0);
+            powerUpLoad.value += Time.deltaTime * 100;
+        }
+    }
 
-        isRecharging = false;
+
+    private void PowerUpState(bool playerCanTakeDamage, float speed, float aditionalSpeed)
+    {
+        playerHealth.canTakeDamage = playerCanTakeDamage;
+        player.velocidad = speed + aditionalSpeed;
+    }
+
+
+    private void SetSliderValues()
+    {
+        powerUpLoad.minValue = 0;
+        powerUpLoad.maxValue = 100;
+        powerUpLoad.value = powerUpLoad.maxValue;
     }
     #endregion
 }
