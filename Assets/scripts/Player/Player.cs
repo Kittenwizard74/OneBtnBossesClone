@@ -8,30 +8,35 @@ using UnityEngine.Scripting;
 public class Player : MonoBehaviour
 {
     #region Variables
-    [Header("movimiento")]
+    [Header("Movimiento")]
     [SerializeField] float velocidad = 5f;
     private Vector3 direccion = Vector3.forward;
+    public bool isSpeedBoostActive = false;
 
-    [Header("disparo")]
+    [Header("Disparo")]
     [SerializeField] GameObject bulletPrefab; 
     [SerializeField] Transform shootPoint; 
     [SerializeField] float bulletSpeed = 20f;
     [SerializeField] float fireRate = 1f;
     #endregion
-    #region base methods
 
+    #region Base Methods
     private void Start()
     {
         StartCoroutine(handleShooting());
     }
+
     void Update()
     {
+        float speed = isSpeedBoostActive ? velocidad * 2 : velocidad;
         transform.RotateAround(Vector3.zero, direccion, velocidad * Time.deltaTime);
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
             HandleMovement();
         }
     }
+
     private IEnumerator handleShooting()
     {
         while (true)
@@ -47,15 +52,22 @@ public class Player : MonoBehaviour
         }
     }
     #endregion
-    #region custom variables
+
+    #region Custom Variables
     protected virtual void HandleMovement()
     {
         direccion = -direccion;
     }
 
-    //protected virtual void IncreaseSpeed()
-    //{
+    public void ActivateSpeedBoost()
+    {
+        isSpeedBoostActive = true;
+        Debug.Log("Speed boost activado");
+    }
 
-    //}
+    public void DeactivateSpeedBoost()
+    {
+        isSpeedBoostActive = false;
+    }
     #endregion
 }
