@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Scripting;
+using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class Player : MonoBehaviour
@@ -12,6 +13,7 @@ public class Player : MonoBehaviour
     [SerializeField] public float velocidad = 5f;
     private Vector3 direccion = Vector3.forward;
     public bool isSpeedBoostActive = false;
+    PlayerInputs playerInputActions;
 
     [Header("Disparo")]
     [SerializeField] GameObject bulletPrefab; 
@@ -24,6 +26,10 @@ public class Player : MonoBehaviour
     private void Start()
     {
         StartCoroutine(handleShooting());
+
+        playerInputActions = new PlayerInputs();
+        playerInputActions.Player.Enable();
+        playerInputActions.Player.RotateMov.performed += HandleMovement;
     }
 
     void Update()
@@ -54,8 +60,15 @@ public class Player : MonoBehaviour
     #endregion
 
     #region Custom Variables
-    protected virtual void HandleMovement()
+    public void HandleMovement(InputAction.CallbackContext context) // Utiliza el input system.
     {
+        Debug.Log("Cambio de direccion (desde InputAction)!" + context);
+        direccion = -direccion;
+    }
+
+    public void HandleMovement()
+    {
+        Debug.Log("Cambio de direccion (desde Update)!");
         direccion = -direccion;
     }
 
