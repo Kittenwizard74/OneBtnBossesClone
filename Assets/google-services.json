@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "180335921387",
+    "project_id": "onebtnbossesclone-c1be1",
+    "storage_bucket": "onebtnbossesclone-c1be1.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:180335921387:android:d632c78b29575759d6d6ae",
+        "android_client_info": {
+          "package_name": "com.GatoProductions.btn"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD-2tCjfV7rQkuJQHbGMwDWNVwbQV-S6zQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
