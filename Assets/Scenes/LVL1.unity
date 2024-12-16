@@ -1224,6 +1224,9 @@ GameObject:
   - component: {fileID: 455413814}
   - component: {fileID: 455413813}
   - component: {fileID: 455413812}
+  - component: {fileID: 455413817}
+  - component: {fileID: 455413816}
+  - component: {fileID: 455413815}
   m_Layer: 0
   m_Name: death screen
   m_TagString: Untagged
@@ -1318,6 +1321,71 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &455413815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 455413810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 334c9371896418f4386e4281ce61f24e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxHP: 3
+  CurrentHP: 0
+  deathPanel: {fileID: 455413810}
+  lifeSprites:
+  - {fileID: 1808221727}
+  - {fileID: 1370667132}
+  - {fileID: 159434942}
+  canTakeDamage: 1
+--- !u!114 &455413816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 455413810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cef0fb12160f0c142b608e9ddb8a744d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  velocidad: 5
+  isSpeedBoostActive: 0
+  bulletPrefab: {fileID: 8704136883406980669, guid: 9eff0cbde2db8414eb5a9fe76b354170, type: 3}
+  shootPoint: {fileID: 589536883033408865}
+  bulletSpeed: 20
+  fireRate: 1
+--- !u!50 &455413817
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 455413810}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &492534566
 GameObject:
   m_ObjectHideFlags: 0
@@ -6303,6 +6371,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2371514089749894853, guid: bc46df7970210574884753394f04fcda, type: 3}
+      propertyPath: sliderPwrp
+      value: 
+      objectReference: {fileID: 1365138744}
+    - target: {fileID: 2371514089749894853, guid: bc46df7970210574884753394f04fcda, type: 3}
       propertyPath: powerUpLoad
       value: 
       objectReference: {fileID: 1365138744}
@@ -6312,13 +6384,18 @@ PrefabInstance:
       objectReference: {fileID: 1365138744}
     - target: {fileID: 5537525255533442352, guid: bc46df7970210574884753394f04fcda, type: 3}
       propertyPath: m_Name
-      value: pj.temp
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc46df7970210574884753394f04fcda, type: 3}
+--- !u!4 &589536883033408865 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3209176206963303915, guid: bc46df7970210574884753394f04fcda, type: 3}
+  m_PrefabInstance: {fileID: 589536883033408864}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

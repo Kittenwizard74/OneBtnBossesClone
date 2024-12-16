@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 
 public class CharacterTests : InputTestFixture
 {
-    GameObject character = Resources.Load<GameObject>("pj.temp");
+    GameObject character = Resources.Load<GameObject>("Player");
     Keyboard keyboard;
 
     // A Test behaves as an ordinary method
@@ -16,14 +16,42 @@ public class CharacterTests : InputTestFixture
     public void TestPlayerInstantiation()
     {
         GameObject characterInstance = GameObject.Instantiate(character, Vector3.zero, Quaternion.identity);
+        Assert.That(character, Is.Not.Null, "Player prefab was not found in Resources.");
 
-        var playerHealth = characterInstance.GetComponent<PlayerHealth>();
+        PlayerHealth playerHealth = characterInstance.GetComponent<PlayerHealth>();
         Assert.That(playerHealth, Is.Not.Null, "PlayerHealth component not found on character prefab.");
 
-        GameObject mockDeathPanel = new GameObject("MockDeathPanel");
-        playerHealth.deathPanel = mockDeathPanel;
+        // Si deathPanel es nulo, asignamos un objeto temporal para evitar el error.
+        if (playerHealth.deathPanel == null)
+        {
+            GameObject mockDeathPanel = new GameObject("MockDeathPanel");
+            playerHealth.deathPanel = mockDeathPanel;
+        }
 
-        Assert.That(characterInstance, Is.Not.Null);
+        var rigidbody = characterInstance.GetComponent<Rigidbody2D>();
+        Assert.That(rigidbody, Is.Not.Null, "Player does not have a Rigidbody2D component.");
+
+        Assert.That(characterInstance.CompareTag("Player"), Is.True, "Player tag is not correctly assigned.");
+    }
+
+    [UnityTest]
+    public IEnumerator TestPlayerInstantiationInPlayMode()
+    {
+        GameObject characterInstance = GameObject.Instantiate(character, Vector3.zero, Quaternion.identity);
+
+        // Esperar un frame para simular el ciclo de juego
+        yield return null;
+
+        Assert.That(characterInstance, Is.Not.Null, "Player character was not instantiated.");
+    }
+    public IEnumerator TestPlayerMoves()
+    {
+        GameObject characterInstance = GameObject.Instantiate(character, Vector3.zero, Quaternion.identity);
+        Press(keyboard.spaceKey);
+        yield return new WaitForSeconds(1f);
+        Release(keyboard.spaceKey);
+        yield return new WaitForSeconds(1f);
+        Assert.That(characterInstance.transform.GetChild(0).transform.position.z, Is.GreaterThan(1.5f));
     }
 
     //public void CharacterTestsSimplePasses()

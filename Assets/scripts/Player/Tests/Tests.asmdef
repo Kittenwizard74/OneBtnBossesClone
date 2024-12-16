@@ -2,11 +2,13 @@
     "name": "Tests",
     "rootNamespace": "",
     "references": [
+        "UnityEditor",
         "UnityEngine.TestRunner",
         "UnityEditor.TestRunner",
         "Unity.InputSystem",
         "Unity.InputSystem.TestFramework",
-        "OneBtnMain"
+        "OneBtnMain",
+        "Assembly-CSharp"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

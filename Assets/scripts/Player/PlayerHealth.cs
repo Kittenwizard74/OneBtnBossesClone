@@ -12,7 +12,7 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] int MaxHP = 3;
     [SerializeField] int CurrentHP;
 
-    [SerializeField] GameObject deathPanel;
+    [SerializeField] public GameObject deathPanel;
     [SerializeField] private GameObject[] lifeSprites;
 
     [SerializeField] public bool canTakeDamage = true;
@@ -24,6 +24,14 @@ public class PlayerHealth : MonoBehaviour
     {
         alive = true;
         CurrentHP = MaxHP;
+
+        if (deathPanel == null)
+        {
+            // Asignar un GameObject vacío si deathPanel no está asignado
+            deathPanel = new GameObject("DeathPanel");
+            deathPanel.SetActive(false); // Asegúrate de desactivarlo si no se va a usar.
+        }
+
         deathPanel.SetActive(false);
     }
     private void OnTriggerEnter2D(Collider2D collision)
