@@ -12,14 +12,33 @@ public class SpeedPowerup : MonoBehaviour
     private float normalSpeed;
     private Player player;
     private PlayerHealth playerHealth;
+    [SerializeField] private Slider sliderPwrp;
 
     #endregion
 
     #region Base Methods
     void Start()
     {
+        if (powerUpLoad == null)
+        {
+            Debug.LogError("PowerUpLoad Slider reference is missing.");
+        }
+        else
+        {
+            Debug.Log("PowerUpLoad Slider reference is assigned.");
+        }
+
         player = gameObject.GetComponent<Player>();
+        if (player == null)
+        {
+            Debug.LogError("Player component not found.");
+        }
+
         playerHealth = gameObject.GetComponent<PlayerHealth>();
+        if (playerHealth == null)
+        {
+            Debug.LogError("PlayerHealth component not found.");
+        }
 
         normalSpeed = player.velocidad;
         SetSliderValues();
@@ -34,6 +53,12 @@ public class SpeedPowerup : MonoBehaviour
     #region Custom Variables
     private void PowerUpEffect()
     {
+        if (powerUpLoad == null)
+        {
+            Debug.LogError("PowerUpLoad slider is not assigned!");
+            return; // Salir de la función si no está asignado
+        }
+
         if (Input.GetKey(KeyCode.Space))
         {
             if (powerUpLoad.value > 0)
@@ -63,9 +88,17 @@ public class SpeedPowerup : MonoBehaviour
 
     private void SetSliderValues()
     {
-        powerUpLoad.minValue = 0;
-        powerUpLoad.maxValue = 100;
-        powerUpLoad.value = powerUpLoad.maxValue;
+        if (powerUpLoad != null)
+        {
+            powerUpLoad.minValue = 0;
+            powerUpLoad.maxValue = 100;
+            powerUpLoad.value = powerUpLoad.maxValue;
+        }
+        else
+        {
+            Debug.LogError("Slider reference is still null, cannot set values.");
+        }
     }
+
     #endregion
 }

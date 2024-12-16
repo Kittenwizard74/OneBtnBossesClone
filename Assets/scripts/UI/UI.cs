@@ -5,6 +5,8 @@ using TMPro;
 
 public class UI : MonoBehaviour
 {
+    public static UI Instance;
+
     [SerializeField] List<TextMeshProUGUI> besttimetxt;
     [SerializeField] List<TextMeshProUGUI> currenttimetxt;
     [SerializeField] TextMeshProUGUI record;
@@ -14,6 +16,16 @@ public class UI : MonoBehaviour
 
     void Awake()
     {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            Instance = this;  // Asigna la instancia actual
+            DontDestroyOnLoad(gameObject);  // Evita que la UI sea destruida entre escenas
+        }
+
         bestTime = PlayerPrefs.GetFloat("BestTime", Mathf.Infinity);
         record.gameObject.SetActive(false); 
     }
