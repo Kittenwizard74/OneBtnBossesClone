@@ -3,7 +3,10 @@ guid: 9f2b03e224d8d7845a4a258318c035cf
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - deathPanel: {fileID: 9048713640841100722, guid: 6caab31a8a59f4647921e9f3e63ab4c6, type: 3}
+  - victoryPanel: {fileID: 8264291522286664785, guid: 2b93584ecf2827b4db95e41bb7985402, type: 3}
+  - menuPanel: {fileID: 8677028343103041222, guid: c0d6f6d1f58fa2649b5ffdba3e535a3e, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
