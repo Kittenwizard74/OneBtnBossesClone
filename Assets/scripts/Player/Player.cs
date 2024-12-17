@@ -37,10 +37,10 @@ public class Player : MonoBehaviour
         float speed = isSpeedBoostActive ? velocidad * 2 : velocidad;
         transform.RotateAround(Vector3.zero, direccion, velocidad * Time.deltaTime);
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            HandleMovement();
-        }
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    //HandleMovement();
+        //}
     }
 
     private IEnumerator handleShooting()
@@ -66,11 +66,11 @@ public class Player : MonoBehaviour
         direccion = -direccion;
     }
 
-    public void HandleMovement()
-    {
-        Debug.Log("Cambio de direccion (desde Update)!");
-        direccion = -direccion;
-    }
+    //public void HandleMovement()
+    //{
+    //    Debug.Log("Cambio de direccion (desde Update)!");
+    //    direccion = -direccion;
+    //}
 
     public void ActivateSpeedBoost()
     {
