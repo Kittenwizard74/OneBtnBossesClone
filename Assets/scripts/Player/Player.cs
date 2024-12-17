@@ -36,11 +36,6 @@ public class Player : MonoBehaviour
     {
         float speed = isSpeedBoostActive ? velocidad * 2 : velocidad;
         transform.RotateAround(Vector3.zero, direccion, velocidad * Time.deltaTime);
-
-        //if (Input.GetKeyDown(KeyCode.Space))
-        //{
-        //    //HandleMovement();
-        //}
     }
 
     private IEnumerator handleShooting()
@@ -60,17 +55,11 @@ public class Player : MonoBehaviour
     #endregion
 
     #region Custom Variables
-    public void HandleMovement(InputAction.CallbackContext context) // Utiliza el input system.
+    public void HandleMovement(InputAction.CallbackContext context) 
     {
         Debug.Log("Cambio de direccion (desde InputAction)!" + context);
         direccion = -direccion;
     }
-
-    //public void HandleMovement()
-    //{
-    //    Debug.Log("Cambio de direccion (desde Update)!");
-    //    direccion = -direccion;
-    //}
 
     public void ActivateSpeedBoost()
     {

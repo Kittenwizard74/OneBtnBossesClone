@@ -12,7 +12,6 @@ public class Enemy : MonoBehaviour
     [SerializeField] int HPEnemy;
 
     [SerializeField] GameObject victoryPanel;
-    //public GameManager victoryPanel;
     #endregion
     #region base methods
 

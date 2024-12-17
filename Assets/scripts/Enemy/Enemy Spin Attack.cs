@@ -10,7 +10,6 @@ public class EnemySpinAttack : MonoBehaviour
     [SerializeField] float maxTime;
     [SerializeField] float fireRate;
     [SerializeField] float radio;
-    //se puede reusar code con esto y cone attack, cambiar si necesario
 
     private void Awake()
     {

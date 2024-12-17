@@ -27,9 +27,8 @@ public class PlayerHealth : MonoBehaviour
 
         if (deathPanel == null)
         {
-            // Asignar un GameObject vacío si deathPanel no está asignado
             deathPanel = new GameObject("DeathPanel");
-            deathPanel.SetActive(false); // Asegúrate de desactivarlo si no se va a usar.
+            deathPanel.SetActive(false); 
         }
 
         deathPanel.SetActive(false);
@@ -47,10 +46,10 @@ public class PlayerHealth : MonoBehaviour
     public void handleHealth()
     {
         if(CurrentHP <= 0) 
-        { 
+        {
+            deathPanel.SetActive(true);
             alive = false;
             Time.timeScale = 0f;
-            deathPanel.SetActive(true);
         }
     }
 

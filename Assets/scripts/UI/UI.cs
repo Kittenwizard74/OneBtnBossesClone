@@ -22,8 +22,8 @@ public class UI : MonoBehaviour
         }
         else
         {
-            Instance = this;  // Asigna la instancia actual
-            DontDestroyOnLoad(gameObject);  // Evita que la UI sea destruida entre escenas
+            Instance = this; 
+            DontDestroyOnLoad(gameObject);  
         }
 
         bestTime = PlayerPrefs.GetFloat("BestTime", Mathf.Infinity);
